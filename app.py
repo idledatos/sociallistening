@@ -65,7 +65,7 @@ file3=file3.readlines()
 
 def social_listening_user(x):
     diccionario_tweets = {}
-    for status in tweepy.Cursor(api.user_timeline, screen_name=x, tweet_mode="extended").items(100):
+    for status in tweepy.Cursor(api.user_timeline, screen_name=x, tweet_mode="extended").items(50):
         try:
             texto = status.retweeted_status.full_text
             retweet = 'si'
