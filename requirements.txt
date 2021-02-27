@@ -32,7 +32,7 @@ Mako==1.1.4
 MarkupSafe==1.1.1
 matplotlib==3.3.4
 murmurhash==1.0.5
-nltk==3.5
+nltk
 numpy
 oauthlib==3.1.0
 packaging==20.9
