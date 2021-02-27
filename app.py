@@ -85,10 +85,10 @@ def social_listening_user(x):
     try:
         top_mentions = [x for x in pd.array(mentions_rt_arr).value_counts().head(10).reset_index()['index']]
         top_mentions_2 = ', '.join([x+'\n' for x in top_mentions])
-        print('''The most mentioned accounts are: {}'''.format(', '.join(top_mentions)))
+        #print('''The most mentioned accounts are: {}'''.format(', '.join(top_mentions)))
     except:
         top_mentions_2 = 'There are no mentions'
-        print('''There are no mentions''')
+        #print('''There are no mentions''')
     
     
     data['Hashtags'] = data.Text.apply(lambda x: re.findall(r'#\w+',x))
@@ -98,10 +98,10 @@ def social_listening_user(x):
     try:
         top_hashtags = [x for x in pd.array(hashtag_arr).value_counts().head(10).reset_index()['index']]
         top_hashtags_2 = ', '.join([x+'\n' for x in top_hashtags])
-        print('''The most used hashtags are: {}'''.format(', '.join(top_hashtags)))
+        #print('''The most used hashtags are: {}'''.format(', '.join(top_hashtags)))
     except:
         top_hashtags_2 = 'There are no hashtags'
-        print('''There are no hashtags''')
+        #print('''There are no hashtags''')
 
     data['Text_2'] = data.Text.apply(lambda x: re.sub('<U\+[A-Z0-9]+>','', x))
     data['Text_2'] = data['Text_2'].apply(lambda x: re.sub('&amp;','&', x))
@@ -114,10 +114,10 @@ def social_listening_user(x):
     
     most_liked = data.sort_values(by = 'Favorite_count',ascending = False)['Text_2'].reset_index()['Text_2'][0]
     most_retweet = data.sort_values(by = 'Retweet_count',ascending = False)['Text_2'].reset_index()['Text_2'][0]
-    print('----------------------------------------------------------------------------------------------------------------')
-    print('''The most liked tweet is: {}'''.format(most_liked))
-    print('''The most retweeted tweet is: {}'''.format(most_retweet))
-    print('----------------------------------------------------------------------------------------------------------------')
+    #print('----------------------------------------------------------------------------------------------------------------')
+    #print('''The most liked tweet is: {}'''.format(most_liked))
+    #print('''The most retweeted tweet is: {}'''.format(most_retweet))
+    #print('----------------------------------------------------------------------------------------------------------------')
     
     language = detect(data['Text_2'].reset_index()['Text_2'][0])
     num_index = 0
@@ -142,10 +142,10 @@ def social_listening_user(x):
 
         
         #print('''LEXICONS''')
-        print('Some positive tweets: ')
+        #print('Some positive tweets: ')
         for x in positive_tweets:
             print(x)
-        print('Some negative tweets: ')
+        #print('Some negative tweets: ')
         for x in negative_tweets:
             print(x)
         neg_perc = data[data['Ratio'] < 0].shape[0]/data.shape[0]
@@ -159,22 +159,22 @@ def social_listening_user(x):
         pos_tweets_2 = ', '.join([x+'\n' for x in pos_tweets])
         neg_tweets = [x for x in data.sort_values(by = 'Compound',ascending = True).reset_index().iloc[:5,1]]
         neg_tweets_2 = ', '.join([x+'\n' for x in neg_tweets])
-        print('Some positive tweets: ')
+        #print('Some positive tweets: ')
         for x in pos_tweets:
             print(x)
-        print('Some negative tweets: ')
+        #print('Some negative tweets: ')
         for x in neg_tweets:
             print(x)
         neg_perc = data[data['Compound'] < 0].shape[0]/data.shape[0]
         pos_perc = data[data['Compound'] > 0].shape[0]/data.shape[0]
         neu_perc = data[data['Compound'] == 0].shape[0]/data.shape[0]
 
-    print('----------------------------------------------------------------------------------------------------------------')
+    #print('----------------------------------------------------------------------------------------------------------------')
 
-    print('Percentage of positive tweets: {}'.format(pos_perc))
-    print('Percentage of negative tweets: {}'.format(neg_perc))
-    print('Percentage of neutral tweets: {}'.format(neu_perc))
-    print('----------------------------------------------------------------------------------------------------------------')
+    #print('Percentage of positive tweets: {}'.format(pos_perc))
+    #print('Percentage of negative tweets: {}'.format(neg_perc))
+    #print('Percentage of neutral tweets: {}'.format(neu_perc))
+    #print('----------------------------------------------------------------------------------------------------------------')
     
     def clean(x):	
 	    doc = nlp(x)
@@ -197,7 +197,7 @@ def social_listening_user(x):
     combined_tweets = combined_tweets.split()
     counts = Counter(combined_tweets)
     
-    print('Wordcloud for the last tweets')
+    #print('Wordcloud for the last tweets')
     return generate_wordcloud(counts),top_mentions_2,top_hashtags_2,most_liked,most_retweet,float(neg_perc)*100,float(neu_perc)*100,float(pos_perc)*100,neg_tweets_2,pos_tweets_2
 ###Components
 
