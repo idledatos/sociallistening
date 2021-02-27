@@ -234,6 +234,7 @@ cards_pos = dbc.Card([dbc.CardHeader('Some Positive Tweets'),dbc.CardBody([html.
 
 ### Dash layout
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+server = app.server
 app.layout = html.Div([
 					dbc.Row([html.H2('Social Listening')],justify="center", align="center"),
 					dbc.Row([
