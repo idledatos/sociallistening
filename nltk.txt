@@ -1,2 +1,6 @@
 vader_lexicon
 stopwords
+wordnet
+pros_cons
+reuters
+punkt
