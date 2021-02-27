@@ -1,1 +1,2 @@
-vader_lexicon stopwords
+vader_lexicon
+stopwords
